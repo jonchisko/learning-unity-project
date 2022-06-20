@@ -24,4 +24,3 @@ You wake up on an alien planet in a forest, where your ship has crash landed. Bl
 ### RFC (request for comment)
 X thing is good, could perhaps be enhanced by C and D.
 Would cut out E and could you further elaborate on M.
-##### Name
