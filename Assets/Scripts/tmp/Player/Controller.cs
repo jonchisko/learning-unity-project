@@ -11,7 +11,7 @@ public class Controller : MonoBehaviour, IFallable
 
     private float speed = 0.0f;
     private float verticalSpeed = 0.0f;
-    private float jumpAcceleration = 500.0f;
+    private float jumpAcceleration = 1000.0f;
     private bool grounded = true;
 
     // Start is called before the first frame update
@@ -60,8 +60,6 @@ public class Controller : MonoBehaviour, IFallable
                 this.speed = 0.0f;
             }
         }
-        
-        Debug.Log(string.Format("{0}, speed: {1}", this.ToString(), this.speed));
 
         playerTransform.Translate(this.speed * direction);
     }
