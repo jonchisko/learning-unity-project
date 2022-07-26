@@ -10,7 +10,8 @@ namespace Waffle.Physics
         [SerializeField]
         private Transform objectTransform;
 
-        private Vector2 speed = Vector2.zero;
+        private float xSpeed = 0;
+        private float ySpeed = 0;
 
 
         private void Awake()
@@ -20,28 +21,28 @@ namespace Waffle.Physics
 
         void FixedUpdate()
         {
-            Vector2 change = Vector2.right * speed.x + Vector2.up * speed.y;
-            objectTransform.Translate(change * Time.deltaTime);
+            Vector2 change = (Vector2.right * xSpeed + Vector2.up * ySpeed) * Time.deltaTime;
+            objectTransform.Translate(change);
         }
 
         public void SetHorizontal(float value)
         {
-            speed.x = value;
+            xSpeed = value;
         }
 
         public void SetVertical(float value)
         {
-            speed.y = value;
+            ySpeed = value;
         }
 
         public float GetHorizontal()
         {
-            return speed.x;
+            return xSpeed;
         }
 
         public float GetVertical()
         {
-            return speed.y;
+            return ySpeed;
         }
     }
 }

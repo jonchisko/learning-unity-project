@@ -11,11 +11,9 @@ namespace Waffle.Physics
         [SerializeField]
         private GravityInfo gravityInfo;
         [SerializeField]
-        private Transform characterTransform; 
-        [SerializeField]
         private ObjectSpeed objectSpeed;
 
-        private bool isGrounded = true;
+        private bool isGrounded = false;
 
         // Start is called before the first frame update
         void Start()
@@ -25,14 +23,15 @@ namespace Waffle.Physics
 
         private void FixedUpdate()
         {
-            if (isGrounded)
+            if (isGrounded && Mathf.Abs(objectSpeed.GetVertical() - 0.0f) >= Mathf.Epsilon)
             {
                 objectSpeed.SetVertical(0);
                 return;
             }
 
-            float updatedSpeed = objectSpeed.GetVertical() + gravityInfo.GetGravityAcceleration() * Time.deltaTime;
-            updatedSpeed = Mathf.Clamp(updatedSpeed, 0, gravityInfo.GetMaxGravitySpeed());
+            // gravity points down
+            float updatedSpeed = objectSpeed.GetVertical() - gravityInfo.GetGravityAcceleration() * Time.deltaTime;
+            updatedSpeed = Mathf.Clamp(updatedSpeed, -gravityInfo.GetMaxGravitySpeed(), gravityInfo.GetMaxGravitySpeed());
             objectSpeed.SetVertical(updatedSpeed);
         }
 

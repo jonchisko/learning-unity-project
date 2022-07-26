@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardImg: {fileID: 1317302346291182257}
-  particleSystem: {fileID: 1317302346867692774}
+  particles: {fileID: 0}
   counterCooldown: {fileID: 1317302345892949212}
   controller: {fileID: 1317302346625240490}
 --- !u!61 &1317302345651151584
@@ -534,7 +534,7 @@ GameObject:
   - component: {fileID: 1317302346625240491}
   m_Layer: 0
   m_Name: PlatformObject
-  m_TagString: Floor
+  m_TagString: PlatformFloor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

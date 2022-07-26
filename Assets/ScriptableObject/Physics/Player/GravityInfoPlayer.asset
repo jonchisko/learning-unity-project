@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2f71e702749d844b989b87556b68dc0, type: 3}
   m_Name: GravityInfoPlayer
   m_EditorClassIdentifier: 
-  gravityAcceleration: 1
+  gravityAcceleration: 10
+  maxGravitySpeed: 50
