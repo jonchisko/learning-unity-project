@@ -11,7 +11,7 @@ namespace Waffle.PlatformSystems
         [SerializeField]
         private SpriteRenderer cardImg;
         [SerializeField]
-        private ParticleSystem particleSystem;
+        private ParticleSystem particles;
         [SerializeField]
         private GameObject counterCooldown;
         [SerializeField]
@@ -58,7 +58,7 @@ namespace Waffle.PlatformSystems
                 counterCooldown.SetActive(false);
                 cardImg.sprite = card.GetBaseCardStats().GetCardImage();
                 cardImg.enabled = true;
-                particleSystem.Play();
+                particles.Play();
             } else
             {
                 cardImg.enabled = false;
