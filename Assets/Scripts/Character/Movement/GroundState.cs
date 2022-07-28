@@ -2,17 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GroundState : MonoBehaviour
+namespace Waffle.MovementSystem
 {
-    // Start is called before the first frame update
-    void Start()
+    public class GroundState : MoveState
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
+
+
