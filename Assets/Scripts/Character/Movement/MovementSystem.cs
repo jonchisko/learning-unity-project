@@ -6,7 +6,7 @@ using Waffle.CardSystems.Movement;
 
 namespace Waffle.MovementSystem
 {
-    public class MovementSystem : MonoBehaviour, IMoveState
+    public class MovementSystem : MonoBehaviour
     {
         [SerializeField]
         private MovementStats movementStats;
@@ -14,6 +14,8 @@ namespace Waffle.MovementSystem
         private Animator animatorController;
         [SerializeField]
         private ObjectSpeed objectSpeed;
+        [SerializeField]
+        private SpriteRenderer spriteRenderer;
 
         private IMoveState groundState;
         private IMoveState airState;
@@ -30,6 +32,7 @@ namespace Waffle.MovementSystem
             Debug.Assert(movementStats != null);
             Debug.Assert(animatorController != null);
             Debug.Assert(objectSpeed != null);
+            Debug.Assert(spriteRenderer != null);
         }
 
         // Start is called before the first frame update
@@ -42,10 +45,34 @@ namespace Waffle.MovementSystem
         void Update()
         {
             StateChanger();
+            currentState.Update();
+            Debug.Log(objectSpeed.GetVertical());
         }
 
         private void StateChanger()
         {
+            float y = objectSpeed.GetVertical();
+            if (Mathf.Abs(y - 0) <= Mathf.Epsilon)
+            {
+                // grounded 
+                if (currentState == groundState)
+                {
+                    return;
+                }
+
+                currentState = groundState;
+                currentState.OnEnter();
+            } else
+            {
+                // aired
+                if (currentState == airState)
+                {
+                    return;
+                }
+
+                currentState = airState;
+                currentState.OnEnter();
+            }
 
         }
 
@@ -62,11 +89,6 @@ namespace Waffle.MovementSystem
         public void MoveRight()
         {
             currentState.MoveRight();
-        }
-
-        public void OnEnter()
-        {
-            currentState.OnEnter();
         }
 
         public void SpecialAbility()
@@ -97,6 +119,11 @@ namespace Waffle.MovementSystem
         public MovementStats GetMovementStats()
         {
             return movementStats;
+        }
+
+        public SpriteRenderer GetSpriteRenderer()
+        {
+            return spriteRenderer;
         }
     }
 }

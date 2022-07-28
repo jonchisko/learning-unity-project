@@ -29,6 +29,8 @@ namespace Waffle.Physics
         private Speed groundSpeed;
         [SerializeField]
         private Speed airSpeed;
+        [SerializeField]
+        private float jumpForce;
 
         public Speed GetGroundSpeed()
         {
@@ -38,6 +40,11 @@ namespace Waffle.Physics
         public Speed GetAirSpeed()
         {
             return airSpeed;
+        }
+
+        public float GetJumpForce()
+        {
+            return jumpForce;
         }
     }
 }

@@ -12,6 +12,7 @@ namespace Waffle.MovementSystem
         void MoveRight();
         void SpecialAbility();
         void Jump();
+        void Update();
     }
 }
 

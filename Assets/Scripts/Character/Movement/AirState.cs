@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Waffle.CardSystems.Movement;
+using Waffle.Physics;
 
 namespace Waffle.MovementSystem
 {
@@ -15,27 +17,39 @@ namespace Waffle.MovementSystem
 
         public void OnEnter()
         {
-            throw new System.NotImplementedException();
+            // set animation
+        }
+
+        public void Update()
+        {
+
         }
 
         public void Jump()
         {
-            throw new System.NotImplementedException();
+            Debug.Log("No jump in air state");
         }
 
         public void MoveLeft()
         {
-            throw new System.NotImplementedException();
+            ObjectSpeed objectSpeed = movementSystem.GetObjectSpeed();
+            MovementStats movementStats = movementSystem.GetMovementStats();
+            objectSpeed.SetHorizontal(-movementStats.GetAirSpeed().getSpeedX());
         }
 
         public void MoveRight()
         {
-            throw new System.NotImplementedException();
+            ObjectSpeed objectSpeed = movementSystem.GetObjectSpeed();
+            MovementStats movementStats = movementSystem.GetMovementStats();
+            objectSpeed.SetHorizontal(movementStats.GetAirSpeed().getSpeedX());
         }
 
         public void SpecialAbility()
         {
-            throw new System.NotImplementedException();
+            if (!movementSystem.HasMovementAbility()) return;
+
+            MovementAbility ability = movementSystem.GetMovementAbility();
+            ability.Execute();
         }
     }
 }

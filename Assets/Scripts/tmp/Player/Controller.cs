@@ -7,7 +7,7 @@ public class Controller : MonoBehaviour, IFallable
     [SerializeField]
     private Transform playerTransform;
     [SerializeField]
-    private MovementStats movementStats;
+    private MovementStats1 movementStats;
 
     private float speed = 0.0f;
     private float verticalSpeed = 0.0f;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Player/Movement/Stats")]
-public class MovementStats : ScriptableObject
+public class MovementStats1 : ScriptableObject
 {
     [SerializeField]
     private float maxSpeed = 5.0f;

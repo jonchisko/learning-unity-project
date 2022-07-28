@@ -23,7 +23,7 @@ namespace Waffle.Physics
 
         private void FixedUpdate()
         {
-            if (isGrounded && Mathf.Abs(objectSpeed.GetVertical() - 0.0f) >= Mathf.Epsilon)
+            if (isGrounded)
             {
                 objectSpeed.SetVertical(0);
                 return;
@@ -35,7 +35,7 @@ namespace Waffle.Physics
             objectSpeed.SetVertical(updatedSpeed);
         }
 
-        private void OnCollisionEnter2D(Collision2D collision)
+        private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.gameObject.CompareTag(PlatformTags.PlatformFloorTag))
             {
@@ -43,7 +43,7 @@ namespace Waffle.Physics
             }
         }
 
-        private void OnCollisionExit2D(Collision2D collision)
+        private void OnTriggerExit2D(Collider2D collision)
         {
             if (collision.gameObject.CompareTag(PlatformTags.PlatformFloorTag))
             {
