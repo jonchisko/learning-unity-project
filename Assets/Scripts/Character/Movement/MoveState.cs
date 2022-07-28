@@ -5,9 +5,13 @@ using UnityEngine;
 
 namespace Waffle.MovementSystem
 {
-    public class MoveState
+    public interface IMoveState
     {
-
+        void OnEnter();
+        void MoveLeft();
+        void MoveRight();
+        void SpecialAbility();
+        void Jump();
     }
 }
 
