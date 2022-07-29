@@ -23,11 +23,7 @@ namespace Waffle.Physics
 
         private void FixedUpdate()
         {
-            if (isGrounded)
-            {
-                objectSpeed.SetVertical(0);
-                return;
-            }
+            if (isGrounded) return;
 
             // gravity points down
             float updatedSpeed = objectSpeed.GetVertical() - gravityInfo.GetGravityAcceleration() * Time.deltaTime;
@@ -40,6 +36,7 @@ namespace Waffle.Physics
             if (collision.gameObject.CompareTag(PlatformTags.PlatformFloorTag))
             {
                 isGrounded = true;
+                objectSpeed.SetVertical(0);
             }
         }
 
@@ -50,6 +47,9 @@ namespace Waffle.Physics
                 isGrounded = false;
             }
         }
+
+        public bool IsGrounded()
+            { return isGrounded; }
     }
 }
 

@@ -22,6 +22,7 @@ namespace Waffle.Physics
         void FixedUpdate()
         {
             Vector2 change = (Vector2.right * xSpeed + Vector2.up * ySpeed) * Time.deltaTime;
+            //Debug.Log(change);
             objectTransform.Translate(change);
         }
 
@@ -32,6 +33,7 @@ namespace Waffle.Physics
 
         public void SetVertical(float value)
         {
+            Debug.Log("y speed, " + value);
             ySpeed = value;
         }
 

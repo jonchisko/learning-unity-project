@@ -9,15 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e1ea6a4e4da920479c745e5a369f516, type: 3}
-  m_Name: MovementStatsPlayer
+  m_Script: {fileID: 11500000, guid: 38cae4a635070e847a17ceb87ca343e6, type: 3}
+  m_Name: FrictionStatsPlayer
   m_EditorClassIdentifier: 
-  groundSpeed:
-    speedX: 40
-  maxGroundSpeed:
-    speedX: 45
-  airSpeed:
-    speedX: 20
-  maxAirSpeed:
-    speedX: 25
-  jumpForce: 10
+  friction: 7

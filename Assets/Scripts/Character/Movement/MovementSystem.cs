@@ -4,7 +4,7 @@ using UnityEngine;
 using Waffle.Physics;
 using Waffle.CardSystems.Movement;
 
-namespace Waffle.MovementSystem
+namespace Waffle.CharacterSystem.MovementSystem
 {
     public class MovementSystem : MonoBehaviour
     {
@@ -16,6 +16,8 @@ namespace Waffle.MovementSystem
         private ObjectSpeed objectSpeed;
         [SerializeField]
         private SpriteRenderer spriteRenderer;
+        [SerializeField]
+        private GravityForce gravityForce;
 
         private IMoveState groundState;
         private IMoveState airState;
@@ -33,6 +35,7 @@ namespace Waffle.MovementSystem
             Debug.Assert(animatorController != null);
             Debug.Assert(objectSpeed != null);
             Debug.Assert(spriteRenderer != null);
+            Debug.Assert(gravityForce != null);
         }
 
         // Start is called before the first frame update
@@ -46,13 +49,11 @@ namespace Waffle.MovementSystem
         {
             StateChanger();
             currentState.Update();
-            Debug.Log(objectSpeed.GetVertical());
         }
 
         private void StateChanger()
         {
-            float y = objectSpeed.GetVertical();
-            if (Mathf.Abs(y - 0) <= Mathf.Epsilon)
+            if (gravityForce.IsGrounded())
             {
                 // grounded 
                 if (currentState == groundState)
