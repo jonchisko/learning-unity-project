@@ -26,19 +26,19 @@ namespace Waffle.Physics
         }
 
         [SerializeField]
-        private Speed groundSpeed;
+        private Speed groundAcceleration;
         [SerializeField]
         private Speed maxGroundSpeed;
         [SerializeField]
-        private Speed airSpeed;
+        private Speed airAcceleration;
         [SerializeField]
         private Speed maxAirSpeed;
         [SerializeField]
         private float jumpForce;
 
-        public Speed GetGroundSpeed()
+        public Speed GetGroundAcceleration()
         {
-            return groundSpeed;
+            return groundAcceleration;
         }
 
         public Speed GetMaxGroundSpeed()
@@ -46,9 +46,9 @@ namespace Waffle.Physics
             return maxGroundSpeed;
         }
 
-        public Speed GetAirSpeed()
+        public Speed GetAirAcceleration()
         {
-            return airSpeed;
+            return airAcceleration;
         }
 
         public Speed GetMaxAirSpeed()

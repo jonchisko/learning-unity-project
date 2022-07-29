@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e1ea6a4e4da920479c745e5a369f516, type: 3}
   m_Name: MovementStatsPlayer
   m_EditorClassIdentifier: 
-  groundSpeed:
-    speedX: 40
+  groundAcceleration:
+    speedX: 20
   maxGroundSpeed:
-    speedX: 45
-  airSpeed:
+    speedX: 5
+  airAcceleration:
     speedX: 20
   maxAirSpeed:
-    speedX: 25
+    speedX: 5
   jumpForce: 10

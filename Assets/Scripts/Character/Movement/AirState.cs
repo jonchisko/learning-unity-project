@@ -12,7 +12,6 @@ namespace Waffle.CharacterSystem.MovementSystem
         private MovementStats movementStats;
         private Animator animator;
         private MovementSystem movementSystem;
-        private float previousVerticalSpeed;
 
         public AirState(MovementSystem movementSystem)
         {
@@ -43,15 +42,34 @@ namespace Waffle.CharacterSystem.MovementSystem
         public void MoveLeft()
         {
             movementSystem.GetSpriteRenderer().flipX = true;
-            float speed = objectSpeed.GetHorizontal() - movementStats.GetAirSpeed().getSpeedX() * Time.deltaTime;
-            objectSpeed.SetHorizontal(Mathf.Max(speed, -movementStats.GetMaxAirSpeed().getSpeedX()));
+
+            float currentSpeed = objectSpeed.GetHorizontal();
+            float desiredSpeed = -movementStats.GetMaxAirSpeed().getSpeedX();
+            float maxSpeedChange = -movementStats.GetAirAcceleration().getSpeedX() * Time.deltaTime;
+
+            if (currentSpeed > desiredSpeed)
+            {
+                currentSpeed = Mathf.Max(currentSpeed + maxSpeedChange, desiredSpeed);
+            }
+            objectSpeed.SetHorizontal(currentSpeed);
+            animator.SetInteger("AnimState", 1);
         }
 
         public void MoveRight()
         {
             movementSystem.GetSpriteRenderer().flipX = false;
-            float speed = objectSpeed.GetHorizontal() + movementStats.GetAirSpeed().getSpeedX() * Time.deltaTime;
-            objectSpeed.SetHorizontal(Mathf.Min(speed, movementStats.GetMaxAirSpeed().getSpeedX()));
+
+            float currentSpeed = objectSpeed.GetHorizontal();
+            float desiredSpeed = movementStats.GetMaxAirSpeed().getSpeedX(); // since this is equal in both clases, this could be behind an interface and both states would just get a different object
+            // then the logic code can eb moved into the abstract class state
+            float maxSpeedChange = movementStats.GetAirAcceleration().getSpeedX() * Time.deltaTime;
+
+            if (currentSpeed < desiredSpeed)
+            {
+                currentSpeed = Mathf.Min(currentSpeed + maxSpeedChange, desiredSpeed);
+            }
+            objectSpeed.SetHorizontal(currentSpeed);
+            animator.SetInteger("AnimState", 1);
         }
 
         public void SpecialAbility()

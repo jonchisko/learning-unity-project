@@ -47,16 +47,32 @@ namespace Waffle.CharacterSystem.MovementSystem
         public void MoveLeft()
         {
             movementSystem.GetSpriteRenderer().flipX = true;
-            float speed = objectSpeed.GetHorizontal() - movementStats.GetGroundSpeed().getSpeedX() * Time.deltaTime;
-            objectSpeed.SetHorizontal(Mathf.Max(speed, -movementStats.GetMaxGroundSpeed().getSpeedX()));
+
+            float currentSpeed = objectSpeed.GetHorizontal();
+            float desiredSpeed = -movementStats.GetMaxGroundSpeed().getSpeedX();
+            float maxSpeedChange = -movementStats.GetGroundAcceleration().getSpeedX() * Time.deltaTime;
+            
+            if (currentSpeed > desiredSpeed)
+            {
+                currentSpeed = Mathf.Max(currentSpeed + maxSpeedChange, desiredSpeed);
+            }
+            objectSpeed.SetHorizontal(currentSpeed);
             animator.SetInteger("AnimState", 1);
         }
 
         public void MoveRight()
         {
             movementSystem.GetSpriteRenderer().flipX = false;
-            float speed = objectSpeed.GetHorizontal() + movementStats.GetGroundSpeed().getSpeedX() * Time.deltaTime;
-            objectSpeed.SetHorizontal(Mathf.Min(speed, movementStats.GetMaxGroundSpeed().getSpeedX()));
+
+            float currentSpeed = objectSpeed.GetHorizontal();
+            float desiredSpeed = movementStats.GetMaxGroundSpeed().getSpeedX();
+            float maxSpeedChange = movementStats.GetGroundAcceleration().getSpeedX() * Time.deltaTime;
+
+            if (currentSpeed < desiredSpeed)
+            {
+                currentSpeed = Mathf.Min(currentSpeed + maxSpeedChange, desiredSpeed);
+            }
+            objectSpeed.SetHorizontal(currentSpeed);
             animator.SetInteger("AnimState", 1);
         }
 
