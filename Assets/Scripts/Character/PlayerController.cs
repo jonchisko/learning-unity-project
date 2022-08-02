@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Waffle.CharacterSystem.MovementSystem;
+using Waffle.CharacterSystems.MovementSystems;
 
 namespace Waffle.CharacterSystems
 {
-    public class CharacterController : MonoBehaviour
+    public class PlayerController : MonoBehaviour
     {
         [SerializeField]
         private MovementSystem movementSystem;
