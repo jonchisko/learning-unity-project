@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardImg: {fileID: 1317302346291182257}
-  particles: {fileID: 0}
+  particles: {fileID: 1317302346867692774}
   counterCooldown: {fileID: 1317302345892949212}
   controller: {fileID: 1317302346625240490}
 --- !u!61 &1317302345651151584
@@ -464,7 +464,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1317302346291182263}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.253, z: 0}
+  m_LocalPosition: {x: 0, y: -0.253, z: -0.12}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 1317302345651151590}
@@ -618,7 +618,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1317302346867692779}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: -0.44, z: 0}
+  m_LocalPosition: {x: 0, y: -0.44, z: -0.3}
   m_LocalScale: {x: 0.52745, y: 0.52745, z: 0.52576745}
   m_Children: []
   m_Father: {fileID: 1317302345651151590}

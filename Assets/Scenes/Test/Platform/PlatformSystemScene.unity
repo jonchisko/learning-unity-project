@@ -156,6 +156,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!198 &296061846 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1317302346867692774, guid: 9727f787eedb7524283e015af2770c90, type: 3}
+  m_PrefabInstance: {fileID: 812016306}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &498667610
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -247,6 +252,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5093819}
     m_Modifications:
+    - target: {fileID: 1317302345651151591, guid: 9727f787eedb7524283e015af2770c90, type: 3}
+      propertyPath: particles
+      value: 
+      objectReference: {fileID: 296061846}
     - target: {fileID: 1317302346625240488, guid: 9727f787eedb7524283e015af2770c90, type: 3}
       propertyPath: m_Name
       value: PlatformObject
