@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace Waffle.CharacterSystem.MovementSystem
+namespace Waffle.CharacterSystems.MovementSystems
 {
     public interface IMoveState
     {

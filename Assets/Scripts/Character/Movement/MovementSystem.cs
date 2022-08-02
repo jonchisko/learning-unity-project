@@ -4,7 +4,7 @@ using UnityEngine;
 using Waffle.Physics;
 using Waffle.CardSystems.Movement;
 
-namespace Waffle.CharacterSystem.MovementSystem
+namespace Waffle.CharacterSystems.MovementSystems
 {
     public class MovementSystem : MonoBehaviour
     {

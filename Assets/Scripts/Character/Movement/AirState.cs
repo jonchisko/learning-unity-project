@@ -4,7 +4,7 @@ using UnityEngine;
 using Waffle.CardSystems.Movement;
 using Waffle.Physics;
 
-namespace Waffle.CharacterSystem.MovementSystem
+namespace Waffle.CharacterSystems.MovementSystems
 {
     public class AirState : IMoveState
     {
