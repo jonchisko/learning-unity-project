@@ -13,6 +13,9 @@ namespace Waffle.CharacterSystems.HealthSystems
 
     public class HealthSystem : ILiveable
     {
+        public delegate void HealthEventHandler(HealthSystem healthSystem);
+        public HealthEventHandler onPlayerDeath;
+
         private HealthModel model;
 
         public HealthSystem(HealthStats stats)
@@ -24,6 +27,8 @@ namespace Waffle.CharacterSystems.HealthSystems
         {
             int diff = model.GetCurrentHealth() - damage;
             model.SetCurrentHealth(diff <= 0 ? 0 : diff);
+
+            if (model.GetCurrentHealth() == 0) onPlayerDeath?.Invoke(this);
         }
 
         public void Heal(int heal)
