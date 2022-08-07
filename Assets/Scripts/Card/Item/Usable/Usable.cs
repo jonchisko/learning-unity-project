@@ -17,6 +17,11 @@ namespace Waffle.CardSystems.Item.Usable
         }
 
         public abstract void Use();
+
+        public UsableInfo GetUsableInfo()
+        {
+            return usableInfo;
+        }
     }
 }
 

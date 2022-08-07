@@ -1,16 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Waffle.CardSystems.Item.Usable;
+using Waffle.CardSystems.Item.Usable.Usables;
+using Waffle.Common;
 
 namespace Waffle.CharacterSystems.InventorySystems
 {
     public interface IInventorySystem
     {
-        Usable UsePotion();
-        Usable UseWeapon();
+        Optional<Usable> UsePotion();
+        Optional<Usable> UseWeapon();
         void AddPotion(Usable potion);
         void AddWeapon(Usable weapon);
+
+        void RegisterToInventoryChange(IObserver<UsableHolder> observer);
+        void DeregisterToInventoryChange(IObserver<UsableHolder> observer);
     }
 
     public class UsableHolder
@@ -44,35 +46,63 @@ namespace Waffle.CharacterSystems.InventorySystems
     public class InventorySystem : IInventorySystem
     {
         public delegate void InventoryEventHandler(UsableHolder usableHolder);
-        private event InventoryEventHandler onPotionChange;
-        private event InventoryEventHandler onWeaponChange;
+        private event InventoryEventHandler onInventoryChange;
 
-        private Usable inventoryPotionBag;
-        private Usable inventoryWeaponBag;
+        private UsableHolder inventoryPotionBag = new UsableHolder();
+        private UsableHolder inventoryWeaponBag = new UsableHolder();
 
-        public InventorySystem()
-        {
-
-        }
+        public InventorySystem() { }
 
         public void AddPotion(Usable potion)
         {
-            throw new System.NotImplementedException();
+            AddToInventory(inventoryPotionBag, potion);
         }
 
         public void AddWeapon(Usable weapon)
         {
-            throw new System.NotImplementedException();
+            AddToInventory(inventoryWeaponBag, weapon);
         }
 
-        public Usable UsePotion()
+        public Optional<Usable> UsePotion()
         {
-            throw new System.NotImplementedException();
+            Optional<Usable> potion = GetFromInventory(inventoryPotionBag);
+            return potion;
         }
 
-        public Usable UseWeapon()
+        public Optional<Usable> UseWeapon()
         {
-            throw new System.NotImplementedException();
+            Optional<Usable> weapon = GetFromInventory(inventoryWeaponBag);
+            return weapon;
+        }
+
+        public void RegisterToInventoryChange(IObserver<UsableHolder> observer)
+        {
+            onInventoryChange += observer.Notify;
+        }
+
+        public void DeregisterToInventoryChange(IObserver<UsableHolder> observer)
+        {
+            onInventoryChange -= observer.Notify;
+        }
+
+        private void AddToInventory(UsableHolder holder, Usable usable)
+        {
+            holder.SetUsable(usable);
+            holder.SetAmount(holder.GetAmount() + 1);
+            onInventoryChange?.Invoke(holder);
+        }
+
+        private Optional<Usable> GetFromInventory(UsableHolder holder)
+        {
+            Usable usableToReturn = holder.GetUsable();
+            if (holder.GetAmount() > 0) holder.SetAmount(holder.GetAmount() - 1);
+            if (holder.GetAmount() == 0)
+            {
+                holder.SetUsable(null);
+            }
+
+            onInventoryChange?.Invoke(holder);
+            return usableToReturn;
         }
     }
 }
