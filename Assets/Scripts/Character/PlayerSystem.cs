@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Waffle.CharacterSystems.HealthSystems;
 using Waffle.CharacterSystems.InventorySystems;
 using Waffle.CharacterSystems.MovementSystems;
-using Waffle.Physics;
 
 namespace Waffle.CharacterSystems
 {
