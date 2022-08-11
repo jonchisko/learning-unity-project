@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Waffle.CharacterSystems.HealthSystems;
+using Waffle.CharacterSystems.InventorySystems;
+using Waffle.CharacterSystems.MovementSystems;
+using Waffle.Physics;
 
 namespace Waffle.CharacterSystems
 {
@@ -10,8 +13,16 @@ namespace Waffle.CharacterSystems
         [Header("HealthSystem setup")]
         [SerializeField]
         private HealthStats healthStats;
+        [SerializeField]
+        private GravityAffector gravityAffector;
+        [SerializeField]
+        private PlayerHand playerHand;
+        [SerializeField]
+        private MovementSystem movementSystem;
 
         private HealthSystem healthSystem;
+        private InventorySystem inventorySystem;
+
 
         private void Awake()
         {

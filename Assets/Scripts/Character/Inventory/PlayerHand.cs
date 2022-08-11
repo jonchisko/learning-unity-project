@@ -33,6 +33,7 @@ namespace Waffle.CharacterSystems.InventorySystems
         {
             Destroy(equipableReference);
             equipableReference = null;
+            ClearCurrentUsable();
         }
 
         public void UsePotion()
@@ -51,13 +52,6 @@ namespace Waffle.CharacterSystems.InventorySystems
             currentUsable = usable.Value;
         }
 
-        public void UnequipWeapon()
-        {
-            if (currentUsable == null) return;
-
-            currentUsable = null;
-        }
-
         public void PutToInventory()
         {
             if (currentUsable == null) return;
@@ -71,6 +65,13 @@ namespace Waffle.CharacterSystems.InventorySystems
             if (currentUsable == null) return;
 
             currentUsable.Use();
+        }
+
+        private void ClearCurrentUsable()
+        {
+            if (currentUsable == null) return;
+
+            currentUsable = null;
         }
     }
 }

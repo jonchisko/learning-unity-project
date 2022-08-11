@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Waffle.CharacterSystems.MovementSystems;
+using Waffle.CharacterSystems.InventorySystems;
 
 namespace Waffle.CharacterSystems
 {
@@ -10,11 +11,8 @@ namespace Waffle.CharacterSystems
         [SerializeField]
         private MovementSystem movementSystem;
 
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
+        [SerializeField]
+        private PlayerHand playerHand;
 
         // Update is called once per frame
         void Update()
@@ -34,9 +32,29 @@ namespace Waffle.CharacterSystems
                 movementSystem.Jump();
             }
 
-            if (Input.GetKeyDown(KeyCode.S))
+            if (Input.GetKeyDown(KeyCode.LeftShift))
             {
-                
+                movementSystem.SpecialAbility();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                playerHand.UsePotion();
+            }
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                playerHand.EquipWeapon();
+            }
+
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                playerHand.PutToInventory();
+            }
+
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                playerHand.UseEquiped();
             }
         }
     }
