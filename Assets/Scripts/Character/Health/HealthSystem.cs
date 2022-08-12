@@ -8,6 +8,7 @@ namespace Waffle.CharacterSystems.HealthSystems
     {
         void Heal(int heal);
         void Damage(int damage);
+        HealthModel GetHealthModel();
     }
 
 
@@ -20,7 +21,7 @@ namespace Waffle.CharacterSystems.HealthSystems
 
         public HealthSystem(HealthStats stats)
         {
-            this.model = new HealthModel(stats.GetMaxHealth());
+            model = new HealthModel(stats.GetMaxHealth());
         }
         
         public void Damage(int damage)

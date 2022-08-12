@@ -365,9 +365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 326111960}
-  verticalSpeed: 0
   movementStats: {fileID: 11400000, guid: ef1736e9cfb8b4d40aa89598fc928fda, type: 2}
-  grounded: 1
 --- !u!70 &326111962
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

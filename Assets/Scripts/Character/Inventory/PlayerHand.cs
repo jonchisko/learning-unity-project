@@ -6,7 +6,7 @@ using Waffle.Common;
 
 namespace Waffle.CharacterSystems.InventorySystems
 {
-    public class PlayerHand : MonoBehaviour
+    public class PlayerHand
     {
         private GameObject handObject;
         private GameObject equipableReference = null;
@@ -25,13 +25,13 @@ namespace Waffle.CharacterSystems.InventorySystems
             if (equipable == equipableReference) return;
 
             equipableReference = equipable;
-            Instantiate(equipable, handObject.transform);
+            Object.Instantiate(equipable, handObject.transform);
             equipable.transform.SetParent(handObject.transform, false);
         }
 
         public void UnsetEquipableToHand()
         {
-            Destroy(equipableReference);
+            Object.Destroy(equipableReference);
             equipableReference = null;
             ClearCurrentUsable();
         }

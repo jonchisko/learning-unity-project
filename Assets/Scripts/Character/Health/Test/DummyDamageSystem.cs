@@ -9,7 +9,7 @@ namespace Waffle.CharacterSystems.HealthSystems
         [SerializeField]
         private PlayerSystem playerSystem;
 
-        private HealthSystem healthSystem;
+        private ILiveable healthSystem;
 
         // Start is called before the first frame update
         void Start()

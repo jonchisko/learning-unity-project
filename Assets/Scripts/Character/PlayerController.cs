@@ -10,9 +10,15 @@ namespace Waffle.CharacterSystems
     {
         [SerializeField]
         private MovementSystem movementSystem;
-
-        [SerializeField]
         private PlayerHand playerHand;
+
+        void Start()
+        {
+            PlayerSystem playerSystem = FindObjectOfType<PlayerSystem>().GetComponent<PlayerSystem>();
+            playerHand = playerSystem?.GetPlayerHand();
+
+            Debug.Assert(playerHand != null);
+        }
 
         // Update is called once per frame
         void Update()

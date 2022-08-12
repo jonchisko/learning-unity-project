@@ -2,6 +2,7 @@ using UnityEngine;
 using Waffle.CharacterSystems.HealthSystems;
 using Waffle.CharacterSystems.InventorySystems;
 using Waffle.CharacterSystems.MovementSystems;
+using Waffle.Physics;
 
 namespace Waffle.CharacterSystems
 {
@@ -10,20 +11,24 @@ namespace Waffle.CharacterSystems
         [Header("HealthSystem setup")]
         [SerializeField]
         private HealthStats healthStats;
+        [Header("PlayerHand location")]
         [SerializeField]
-        private GravityAffector gravityAffector;
+        private GameObject playerHandLocation;
         [SerializeField]
-        private PlayerHand playerHand;
+        private GravityForce gravityAffector;
         [SerializeField]
         private MovementSystem movementSystem;
 
-        private HealthSystem healthSystem;
-        private InventorySystem inventorySystem;
+        private ILiveable healthSystem;
+        private IInventorySystem inventorySystem;
+        private PlayerHand playerHand;
 
 
         private void Awake()
         {
             healthSystem = new HealthSystem(healthStats);
+            inventorySystem = new InventorySystem();
+            playerHand = new PlayerHand(inventorySystem, playerHandLocation);
         }
 
         // Start is called before the first frame update
@@ -38,9 +43,24 @@ namespace Waffle.CharacterSystems
 
         }
 
-        public HealthSystem GetHealthSystem()
+        public ILiveable GetHealthSystem()
         {
             return healthSystem;
+        }
+
+        public PlayerHand GetPlayerHand()
+        {
+            return playerHand;
+        }
+
+        public IInventorySystem GetInventorySystem()
+        {
+            return inventorySystem;
+        }
+
+        public MovementSystem GetMovementSystem()
+        {
+            return movementSystem;
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Waffle.CharacterSystems.HealthSystems
 
         void Start()
         {
-            healthModel = FindObjectOfType<PlayerSystem>().GetHealthSystem().GetHealthModel();
+            healthModel = FindObjectOfType<PlayerSystem>().GetComponent<PlayerSystem>().GetHealthSystem().GetHealthModel();
             Debug.Assert(healthModel != null);
             
             SetHealths(healthModel);
