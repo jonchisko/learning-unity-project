@@ -5,6 +5,7 @@ using Waffle.CardSystems.Item.Usable.Usables;
 
 namespace Waffle.CardSystems.Item.Usable
 {
+    [CreateAssetMenu(menuName = "Card/Items/UsableInfo")]
     public class UsableInfo : ScriptableObject
     {
         [SerializeField]
