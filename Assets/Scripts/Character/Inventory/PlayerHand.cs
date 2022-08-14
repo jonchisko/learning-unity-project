@@ -25,13 +25,11 @@ namespace Waffle.CharacterSystems.InventorySystems
             if (equipable == equipableReference) return;
 
             equipableReference = equipable;
-            Object.Instantiate(equipable, handObject.transform);
             equipable.transform.SetParent(handObject.transform, false);
         }
 
         public void UnsetEquipableToHand()
         {
-            Object.Destroy(equipableReference);
             equipableReference = null;
             ClearCurrentUsable();
         }

@@ -14,6 +14,8 @@ namespace Waffle.CardSystems.Item.Usable.Usables
         public override void Use()
         {
             // should inject some info into the prefab "stats" ;) 
+            // Object.Instantiate(equipable, handObject.transform);
+            // Destroy
             throw new System.NotImplementedException();
         }
     }
