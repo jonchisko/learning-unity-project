@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class SwordObject : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject triggerObject;
-    private int damage = 0;
+    private int damage = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -20,17 +18,15 @@ public class SwordObject : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision?.tag == "Damagable")
-        {
-            IDamagable damagable = collision.GetComponent<IDamagable>();
-            damagable?.DoDamage(damage);
-        }
-    }
+
 
     public void SetDamage(int amount)
     {
         damage = amount;
+    }
+
+    public int GetDamage()
+    {
+        return damage;
     }
 }
