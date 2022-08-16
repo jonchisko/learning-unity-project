@@ -7,6 +7,8 @@ public class HealthComponent : MonoBehaviour, IDamagable
 {
     [SerializeField]
     private UnityEvent onDeath = new UnityEvent();
+    [SerializeField]
+    private UnityEvent<int> onDamaged = new UnityEvent<int>();
 
     [SerializeField]
     private int health = 5;
@@ -26,6 +28,7 @@ public class HealthComponent : MonoBehaviour, IDamagable
     public void DoDamage(int amount)
     {
         health = Mathf.Max(health - amount, 0);
+        onDamaged.Invoke(amount);
         if (health == 0)
         {
             onDeath?.Invoke();
