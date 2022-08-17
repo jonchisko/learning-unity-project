@@ -7,8 +7,8 @@ namespace Waffle.CardSystems.Item.Usable
 {
     public abstract class Usable
     {
-        private PlayerSystem playerSystem;
-        private UsableInfo usableInfo;
+        protected PlayerSystem playerSystem;
+        protected UsableInfo usableInfo;
 
         public Usable(PlayerSystem playerSystem, UsableInfo usableInfo)
         {

@@ -25,7 +25,7 @@ namespace Waffle.CharacterSystems.InventorySystems
             if (equipable == equipableReference) return;
 
             equipableReference = equipable;
-            equipable.transform.SetParent(handObject.transform, false);
+            equipable.transform.SetParent(handObject.transform, true);
         }
 
         public void UnsetEquipableToHand()
@@ -65,6 +65,10 @@ namespace Waffle.CharacterSystems.InventorySystems
             currentUsable.Use();
         }
 
+        public bool IsSomethingEquiped()
+        {
+            return currentUsable != null;
+        }
         private void ClearCurrentUsable()
         {
             if (currentUsable == null) return;

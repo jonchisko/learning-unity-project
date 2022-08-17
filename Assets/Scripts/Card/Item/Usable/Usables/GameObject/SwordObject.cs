@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SwordObject : MonoBehaviour
 {
+    [SerializeField]
+    private Animator animator;
     private int damage = 1;
 
     // Start is called before the first frame update
@@ -18,7 +20,10 @@ public class SwordObject : MonoBehaviour
         
     }
 
-
+    public void FireTrigger()
+    {
+        animator.SetTrigger("Attack");
+    }
 
     public void SetDamage(int amount)
     {

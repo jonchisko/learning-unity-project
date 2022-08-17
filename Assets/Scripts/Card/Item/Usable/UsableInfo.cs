@@ -16,6 +16,8 @@ namespace Waffle.CardSystems.Item.Usable
         private GameObject ingamePrefab;
         [SerializeField]
         private int duration;
+        [SerializeField]
+        private int amount;
 
         public UsableType GetUsableType()
         {
@@ -35,6 +37,11 @@ namespace Waffle.CardSystems.Item.Usable
         public int GetDuration()
         {
             return duration;
+        }
+
+        public int GetAmount()
+        {
+            return amount;
         }
     }
 }

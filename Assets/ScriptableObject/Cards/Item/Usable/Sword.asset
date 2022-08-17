@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   usableIcon: {fileID: 21300000, guid: 5387f944763a23e4a9d607676e5961ff, type: 3}
-  ingamePrefab: {fileID: 0}
+  ingamePrefab: {fileID: 8666637153148058118, guid: e2a69036db805ee4bb804b8aab7bc0d2, type: 3}
   duration: 10

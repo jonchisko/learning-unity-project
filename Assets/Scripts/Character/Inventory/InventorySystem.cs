@@ -96,12 +96,12 @@ namespace Waffle.CharacterSystems.InventorySystems
         {
             Usable usableToReturn = holder.GetUsable();
             if (holder.GetAmount() > 0) holder.SetAmount(holder.GetAmount() - 1);
+            onInventoryChange?.Invoke(holder);
             if (holder.GetAmount() == 0)
             {
                 holder.SetUsable(null);
             }
-
-            onInventoryChange?.Invoke(holder);
+            
             return usableToReturn;
         }
     }
