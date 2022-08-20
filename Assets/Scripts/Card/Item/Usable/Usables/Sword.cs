@@ -19,7 +19,7 @@ namespace Waffle.CardSystems.Item.Usable.Usables
 
         public override void Use()
         {
-            if (!playerHand.IsSomethingEquiped())
+            if (swordObject == null)
             {
                 swordObject = Object.Instantiate(base.usableInfo.GetIngamePrefab().GetComponent<SwordObject>());
                 swordObject.SetDamage(base.usableInfo.GetAmount());
@@ -33,7 +33,9 @@ namespace Waffle.CardSystems.Item.Usable.Usables
             if (counter == base.usableInfo.GetDuration())
             {
                 playerHand.UnsetEquipableToHand();
-                Object.Destroy(swordObject);
+                Object.Destroy(swordObject.gameObject);
+                swordObject = null;
+                counter = 0;
             }
         }
     }

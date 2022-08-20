@@ -26,6 +26,7 @@ namespace Waffle.CharacterSystems.HealthSystems
         
         public void Damage(int damage)
         {
+            Debug.Log("Damaging Player");
             int diff = model.GetCurrentHealth() - damage;
             model.SetCurrentHealth(diff <= 0 ? 0 : diff);
 

@@ -16,3 +16,4 @@ MonoBehaviour:
   usableIcon: {fileID: 21300000, guid: 72445c30f4397bf41ace281a68f49377, type: 3}
   ingamePrefab: {fileID: 0}
   duration: 0
+  amount: 1

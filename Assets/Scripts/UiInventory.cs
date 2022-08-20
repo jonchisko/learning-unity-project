@@ -49,7 +49,10 @@ public class UiInventory : MonoBehaviour, IObserver<UsableHolder>
 
     public void Notify(UsableHolder subject)
     {
-        UsableInfo usableInfo = subject.GetUsable().GetUsableInfo();
+        Usable usable = subject.GetUsable();
+        if (usable == null) return;
+
+        UsableInfo usableInfo = usable.GetUsableInfo();
         if (subject.GetAmount() > 0)
         {
             SetCorrectSprite(usableInfo, usableInfo.GetUsableIcon());

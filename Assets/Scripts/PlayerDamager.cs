@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Waffle.CharacterSystems;
 using Waffle.CharacterSystems.HealthSystems;
 
 public class PlayerDamager : MonoBehaviour
@@ -14,7 +14,7 @@ public class PlayerDamager : MonoBehaviour
     {
         if (collision?.tag == "Player")
         {
-            ILiveable liveable = collision.GetComponentInChildren<ILiveable>();
+            ILiveable liveable = collision.GetComponentInChildren<PlayerSystem>()?.GetHealthSystem();
             if (liveable == null) return;
 
             Debug.Log(this.name + ", damaging player!");

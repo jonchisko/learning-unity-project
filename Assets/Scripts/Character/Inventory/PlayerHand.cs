@@ -18,6 +18,8 @@ namespace Waffle.CharacterSystems.InventorySystems
         {
             this.inventorySystem = inventorySystem;
             this.handObject = handObject;
+            Debug.Assert(inventorySystem != null);
+            Debug.Assert(handObject != null);
         }
 
         public void SetEquipableToHand(GameObject equipable)
@@ -25,7 +27,7 @@ namespace Waffle.CharacterSystems.InventorySystems
             if (equipable == equipableReference) return;
 
             equipableReference = equipable;
-            equipable.transform.SetParent(handObject.transform, true);
+            equipable.transform.SetParent(handObject.transform, false);
         }
 
         public void UnsetEquipableToHand()
@@ -37,7 +39,7 @@ namespace Waffle.CharacterSystems.InventorySystems
         public void UsePotion()
         {
             Optional<Usable> usable = inventorySystem.UsePotion();
-            if (!usable.HasValue) return;
+            if (usable.Value == null) return;
 
             usable.Value.Use();
         } 
@@ -45,9 +47,10 @@ namespace Waffle.CharacterSystems.InventorySystems
         public void EquipWeapon()
         {
             Optional<Usable> usable = inventorySystem.UseWeapon();
-            if (!usable.HasValue) return;
+            if (usable.Value == null) return;
 
             currentUsable = usable.Value;
+            UseEquiped();
         }
 
         public void PutToInventory()

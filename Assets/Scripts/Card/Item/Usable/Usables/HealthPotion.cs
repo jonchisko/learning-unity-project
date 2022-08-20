@@ -15,7 +15,7 @@ namespace Waffle.CardSystems.Item.Usable.Usables
 
         public override void Use()
         {
-            ILiveable liveable = base.playerSystem.GetComponent<ILiveable>();
+            ILiveable liveable = base.playerSystem.GetHealthSystem();
             if (liveable == null) return;
 
             Debug.Log(this + " (health potion), Use() with amount: " + base.usableInfo.GetAmount());
